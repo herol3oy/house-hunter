@@ -1,8 +1,9 @@
-import Head from "next/head";
+import Hero from "@/components/hero";
+
 export default function Home() {
   return (
     <>
-      <h1 className="text-red-500 hover:text-blue-900 font-bold">Hello World!</h1>
+      <Hero />
     </>
   );
 }
