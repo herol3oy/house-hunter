@@ -1,0 +1,11 @@
+<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Icon">
+<rect id="Rectangle" opacity="0.01" width="30" height="30" fill="#F6F7F9"/>
+<mask id="mask0_0_154" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="30" height="30">
+<rect id="Rectangle_2" width="30" height="30" fill="white"/>
+</mask>
+<g mask="url(#mask0_0_154)">
+<path id="Combined Shape" fill-rule="evenodd" clip-rule="evenodd" d="M23 16.0027V15H25V16.0027V21.9973V23H23V21.9973H7V23H5V22.0027V18.0027V16.0027V9.58667V7H7V11.5867L11.416 16.0027H23ZM8.584 15.9973L7 14.4133V15.9973H8.584ZM7 20.0027V18.0027H13.416H23V20.0027H7ZM22.0027 13H12.0027V15H22.0027V13Z" fill="#7C7C7C"/>
+</g>
+</g>
+</svg>

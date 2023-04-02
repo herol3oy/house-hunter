@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <div className="flex flex-col gap-5 justify-end bg-blue-600 px-40 h-96">
+    <div className="flex flex-col gap-5 justify-end bg-blue-600 px-60 h-96">
       <h1 className="text-white text-4xl font-bold">Let us Guide You Home</h1>
       <p className="text-white">Find the house of your dreams</p>
 

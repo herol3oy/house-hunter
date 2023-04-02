@@ -1,0 +1,14 @@
+<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Icon">
+<rect id="Rectangle" opacity="0.01" width="30" height="30" fill="#F6F7F9"/>
+<mask id="mask0_0_137" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="30" height="30">
+<rect id="Rectangle_2" width="30" height="30" fill="white"/>
+</mask>
+<g mask="url(#mask0_0_137)">
+<rect id="Rectangle_3" x="9" y="11" width="2" height="10" fill="#7C7C7C"/>
+<rect id="Rectangle_4" x="9" y="19" width="10" height="2" fill="#7C7C7C"/>
+<path id="Line" d="M24.0016 20L19.0016 22.5V17.5L24.0016 20Z" fill="#7C7C7C"/>
+<path id="Line_2" d="M10 6L12.5 11H7.5L10 6Z" fill="#7C7C7C"/>
+</g>
+</g>
+</svg>

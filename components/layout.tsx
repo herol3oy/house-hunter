@@ -1,13 +1,13 @@
-import { ReactNode } from "react";
+import { ChildrenProp } from "@/types/children-props";
 import TopBar from "@/components/topBar";
+import Footer from "./footer";
 
-type LayoutProps = { children: ReactNode };
-
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children }: ChildrenProp) {
   return (
     <div>
       <TopBar />
-      <main >{children}</main>
+      <main>{children}</main>
+      <Footer />
     </div>
   );
 }
