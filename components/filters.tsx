@@ -1,4 +1,25 @@
+// @ts-ignore
+import RangeSlider from "react-range-slider-input";
+import "react-range-slider-input/dist/style.css";
+import { useState } from "react";
+
 export default function Filters() {
+  const [price, setPrice] = useState([0, 200]);
+  const [square, setSquare] = useState([0, 200]);
+
+  const SLIDERS = [
+    {
+      title: "Price range",
+      value: price,
+      setValue: setPrice,
+    },
+    {
+      title: "Square footage",
+      value: square,
+      setValue: setSquare,
+    },
+  ];
+
   return (
     <div className="flex flex-col gap-5 bg-white py-10 px-60">
       <h1 className="text-xl font-bold text-gray-600">Filters</h1>
@@ -31,6 +52,15 @@ export default function Filters() {
             </option>
           ))}
         </select>
+      </div>
+      <div className="flex gap-24 w-full">
+        {SLIDERS.map((slider) => (
+          <div key={slider.title} className="flex flex-col gap-5 w-full">
+            <h3>{slider.title}</h3>
+            <RangeSlider value={slider.value} onInput={slider.setValue} />
+            {slider.value}
+          </div>
+        ))}
       </div>
     </div>
   );
