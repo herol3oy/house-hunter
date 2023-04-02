@@ -4,14 +4,21 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
-     "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       backgroundImage: {
-        'feature-property-image': "url('/feature-property.png')",
-      }
+        "feature-property-image": "url('/feature-property.png')",
+        "hero-image": "url('/hero-bg.svg')",
+      },
+      spacing: {
+        128: "32rem",
+      },
+      colors: {
+        "blue-accent": "#004DFF",
+      },
     },
   },
   plugins: [],
-}
+};

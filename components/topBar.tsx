@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function TopBar() {
   return (
-    <nav className="flex items-center bg-blue-600 p-10 gap-10 px-60">
+    <nav className="flex items-center bg-blue-accent p-10 gap-10 px-60">
       <Image
         src="/reality-properties-logo.png"
         alt="Reality Properties"

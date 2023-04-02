@@ -8,7 +8,7 @@ export default function FeatureProperty() {
           FOR SALE
         </span>
         <h1 className="text-3xl">Villa With Pool For Sale</h1>
-        <h2 className="text-blue-700 font-bold text-2xl">$225,000</h2>
+        <h2 className="text-blue-accent font-bold text-2xl">$225,000</h2>
         <p>263 S Rexford Dr, Beverly Hills, CA 90212</p>
         <div className="flex items-center gap-4">
           <Image src="/icons/bed.svg" alt="bed icon" width={35} height={35} />
