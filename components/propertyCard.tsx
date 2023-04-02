@@ -8,7 +8,8 @@ export default function PropertyCard({ property }: PropertyPropsType) {
 
   return (
     <div className="flex flex-col gap-2 h-fit">
-      <img className="h-72 object-cover w-full" src={image} alt="Property" />
+      <Image className="h-72 object-cover w-full" src={image} alt="Property" 
+      width={350} height={400} />
       <div className="px-4 py-2">
         <h2 className="text-slate-500 text-lg">{title}</h2>
         <h2 className="text-blue-accent font-bold text-lg">

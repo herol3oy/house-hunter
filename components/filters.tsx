@@ -2,6 +2,13 @@
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 import { useState } from "react";
+import { PropertyType } from "@/types/property-type";
+
+const ORDER_BY_OPTIONS = [
+  { value: "", label: "Order by" },
+  { value: "price", label: "Price" },
+  { value: "size", label: "Size" },
+];
 
 export default function Filters() {
   const [price, setPrice] = useState([0, 200]);
@@ -25,30 +32,33 @@ export default function Filters() {
       <h1 className="text-xl font-bold text-gray-600">Filters</h1>
       <div className="flex justify-between gap-10">
         <select className="bg-white text-gray-600 border border-gray-400 text-gray rounded-xl col-span-2 p-3 w-full">
-          {OPTIONS.map((option) => (
-            <option key={option.id} value={option.name}>
-              {option.name}
+          <option value="">Baths</option>
+          {Array.from({ length: 4 }, (_, i) => i + 1).map((numOfBaths) => (
+            <option key={numOfBaths} value={numOfBaths}>
+              {numOfBaths}
             </option>
           ))}
         </select>
         <select className="bg-white text-gray-600 border border-gray-400 text-gray rounded-xl col-span-2 p-3 w-full">
-          {OPTIONS.map((option) => (
-            <option key={option.id} value={option.name}>
-              {option.name}
+          <option value="">Beds</option>
+          {Array.from({ length: 6 }, (_, i) => i + 1).map((numOfBeds) => (
+            <option key={numOfBeds} value={numOfBeds}>
+              {numOfBeds}
             </option>
           ))}
         </select>
         <select className="bg-white text-gray-600 border border-gray-400 text-gray rounded-xl col-span-2 p-3 w-full">
-          {OPTIONS.map((option) => (
-            <option key={option.id} value={option.name}>
-              {option.name}
+          <option value="">Type of estate</option>
+          {Object.values(PropertyType).map((type) => (
+            <option key={type} value={type}>
+              {type}
             </option>
           ))}
         </select>
         <select className="bg-white text-gray-600 border border-gray-400 text-gray rounded-xl col-span-2 p-3 w-full">
-          {OPTIONS.map((option) => (
-            <option key={option.id} value={option.name}>
-              {option.name}
+          {ORDER_BY_OPTIONS.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
             </option>
           ))}
         </select>
@@ -65,14 +75,3 @@ export default function Filters() {
     </div>
   );
 }
-
-const OPTIONS = [
-  {
-    id: 1,
-    name: "For Rent",
-  },
-  {
-    id: 2,
-    name: "For Sale ",
-  },
-];
