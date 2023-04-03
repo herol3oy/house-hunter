@@ -3,14 +3,19 @@ import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 import { useState } from "react";
 import { PropertyType } from "@/types/property-type";
+import { OrderBy } from "@/types/order-by";
+import { FiltersPropsType } from "@/types/filters-props-type";
 
-const ORDER_BY_OPTIONS = [
-  { value: "", label: "Order by" },
-  { value: "price", label: "Price" },
-  { value: "size", label: "Size" },
-];
-
-export default function Filters() {
+export default function Filters({
+  selectedBaths,
+  setSelectedBaths,
+  selectedBeds,
+  setSelectedBeds,
+  selectedPropertyType,
+  setSelectedPropertyType,
+  selectedOrderBy,
+  setSelectedOrderBy,
+}: FiltersPropsType) {
   const [price, setPrice] = useState([0, 200]);
   const [square, setSquare] = useState([0, 200]);
 
@@ -31,7 +36,11 @@ export default function Filters() {
     <div className="flex flex-col gap-5 bg-white py-10 m-2 md:px-60">
       <h1 className="text-xl font-bold text-gray-600">Filters</h1>
       <div className="flex flex-col md:flex-row justify-between gap-10">
-        <select className="bg-white text-gray-600 border border-gray-400 text-gray rounded-xl col-span-2 p-3 w-full">
+        <select
+          className="bg-white text-gray-600 border border-gray-400 text-gray rounded-xl col-span-2 p-3 w-full"
+          value={selectedBaths}
+          onChange={(e) => setSelectedBaths(e.target.value)}
+        >
           <option value="">Baths</option>
           {Array.from({ length: 4 }, (_, i) => i + 1).map((numOfBaths) => (
             <option key={numOfBaths} value={numOfBaths}>
@@ -39,7 +48,11 @@ export default function Filters() {
             </option>
           ))}
         </select>
-        <select className="bg-white text-gray-600 border border-gray-400 text-gray rounded-xl col-span-2 p-3 w-full">
+        <select
+          className="bg-white text-gray-600 border border-gray-400 text-gray rounded-xl col-span-2 p-3 w-full"
+          value={selectedBeds}
+          onChange={(e) => setSelectedBeds(e.target.value)}
+        >
           <option value="">Beds</option>
           {Array.from({ length: 6 }, (_, i) => i + 1).map((numOfBeds) => (
             <option key={numOfBeds} value={numOfBeds}>
@@ -47,7 +60,11 @@ export default function Filters() {
             </option>
           ))}
         </select>
-        <select className="bg-white text-gray-600 border border-gray-400 text-gray rounded-xl col-span-2 p-3 w-full">
+        <select
+          className="bg-white text-gray-600 border border-gray-400 text-gray rounded-xl col-span-2 p-3 w-full"
+          value={selectedPropertyType}
+          onChange={(e) => setSelectedPropertyType(e.target.value)}
+        >
           <option value="">Type of estate</option>
           {Object.values(PropertyType).map((type) => (
             <option key={type} value={type}>
@@ -55,10 +72,15 @@ export default function Filters() {
             </option>
           ))}
         </select>
-        <select className="bg-white text-gray-600 border border-gray-400 text-gray rounded-xl col-span-2 p-3 w-full">
-          {ORDER_BY_OPTIONS.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
+        <select
+          className="bg-white text-gray-600 border border-gray-400 text-gray rounded-xl col-span-2 p-3 w-full"
+          value={selectedOrderBy}
+          onChange={(e) => setSelectedOrderBy(e.target.value)}
+        >
+          <option value="">Order by</option>
+          {Object.values(OrderBy).map((option) => (
+            <option key={option} value={option.toLocaleLowerCase()}>
+              {option}
             </option>
           ))}
         </select>

@@ -6,6 +6,8 @@ import PropertyCardsContainer from "@/components/propertyCardsContainer";
 import CallToAction from "@/components/callToAction";
 import FeatureProperty from "@/components/featureProperty";
 import { PROPERTIES_DATA } from "../DATA";
+import { OrderBy } from "@/types/order-by";
+import { filterProperties } from "@/utils/filter-properties";
 
 const DEFAULT_NUMBER_OF_PROPERTIES = 6;
 
@@ -13,18 +15,59 @@ export default function Home() {
   const [numberOfProperties, setNumberOfProperties] = useState(
     DEFAULT_NUMBER_OF_PROPERTIES
   );
+  const [selectedBaths, setSelectedBaths] = useState("");
+  const [selectedBeds, setSelectedBeds] = useState("");
+  const [selectedPropertyType, setSelectedPropertyType] = useState("");
+  const [selectedOrderBy, setSelectedOrderBy] = useState("");
+
+  const filteredProperties = filterProperties(
+    PROPERTIES_DATA,
+    selectedBaths,
+    selectedBeds,
+    selectedPropertyType
+  );
+
+  switch (selectedOrderBy) {
+    case OrderBy.PRICE.toLocaleLowerCase():
+      filteredProperties.sort((a, b) => a.price - b.price);
+      break;
+    case OrderBy.SIZE.toLocaleLowerCase():
+      filteredProperties.sort((a, b) => a.size - b.size);
+      break;
+    default:
+      break;
+  }
 
   return (
     <>
       <Hero />
-      <Filters />
+      <Filters
+        {...{
+          selectedBaths,
+          setSelectedBaths,
+          selectedBeds,
+          setSelectedBeds,
+          selectedPropertyType,
+          setSelectedPropertyType,
+          selectedOrderBy,
+          setSelectedOrderBy,
+        }}
+      />
       <PropertyCardsContainer
         numberOfProperties={numberOfProperties}
         setNumberOfProperties={setNumberOfProperties}
       >
-        {PROPERTIES_DATA.slice(0, numberOfProperties).map((property) => (
-          <PropertyCard key={property.id} property={property} />
-        ))}
+        {filteredProperties.length ? (
+          filteredProperties
+            .slice(0, numberOfProperties)
+            .map((property) => (
+              <PropertyCard key={property.id} property={property} />
+            ))
+        ) : (
+          <h1 className="text-center col-span-3 text-3xl text-slate-400 font-bold">
+            No result!
+          </h1>
+        )}
       </PropertyCardsContainer>
       <CallToAction />
       <FeatureProperty />
