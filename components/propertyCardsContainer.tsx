@@ -16,7 +16,7 @@ export default function PropertyCardsContainer({
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 px-60">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mx-2 md:px-60">
         {children}
       </div>
       <div className="flex justify-center items-center my-12">

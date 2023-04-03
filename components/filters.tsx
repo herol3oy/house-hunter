@@ -28,9 +28,9 @@ export default function Filters() {
   ];
 
   return (
-    <div className="flex flex-col gap-5 bg-white py-10 px-60">
+    <div className="flex flex-col gap-5 bg-white py-10 m-2 md:px-60">
       <h1 className="text-xl font-bold text-gray-600">Filters</h1>
-      <div className="flex justify-between gap-10">
+      <div className="flex flex-col md:flex-row justify-between gap-10">
         <select className="bg-white text-gray-600 border border-gray-400 text-gray rounded-xl col-span-2 p-3 w-full">
           <option value="">Baths</option>
           {Array.from({ length: 4 }, (_, i) => i + 1).map((numOfBaths) => (
@@ -63,7 +63,7 @@ export default function Filters() {
           ))}
         </select>
       </div>
-      <div className="flex gap-24 w-full">
+      <div className="flex flex-col md:flex-row gap-12 md:gap-24 w-full">
         {SLIDERS.map((slider) => (
           <div key={slider.title} className="flex flex-col gap-5 w-full">
             <h3>{slider.title}</h3>

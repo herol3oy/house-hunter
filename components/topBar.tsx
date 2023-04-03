@@ -2,14 +2,14 @@ import Image from "next/image";
 
 export default function TopBar() {
   return (
-    <nav className="flex items-center bg-blue-accent p-10 gap-10 px-60">
+    <nav className="flex flex-col md:flex-row items-center bg-blue-accent p-10 gap-10 md:px-60 w-full">
       <Image
         src="/reality-properties-logo.png"
         alt="Reality Properties"
         width={161}
         height={42}
       />
-      <div className="flex-1 flex justify-start gap-10">
+      <div className="flex-1 md:flex flex items-center flex-col md:flex-row justify-start gap-2 md:gap-10">
         {NAVIGATION.map((nav) => (
           <a key={nav.name} href={nav.href} className="text-slate-50">
             {nav.name}

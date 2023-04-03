@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function FeatureProperty() {
   return (
-    <div className="bg-feature-property-image bg-no-repeat bg-cover min-h-screen w-full relative">
-      <div className="flex flex-col gap-4 items-start rounded-md bg-white absolute p-12 top-1/2 transform -translate-y-1/2 left-60">
+    <div className="bg-feature-property-image bg-no-repeat bg-cover flex justify-center items-center min-h-screen md:relative p-2 md:p-12 ">
+      <div className="flex flex-col gap-4 items-start rounded-md bg-white md:absolute p-6 md:p-12 top-1/2 transform -translate-y-0 md:-translate-y-1/2 md:left-60">
         <span className="rounded-md bg-amber-500 py-1 px-2 text-white mb-6">
           FOR SALE
         </span>
