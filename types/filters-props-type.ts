@@ -9,4 +9,8 @@ export type FiltersPropsType = {
   setSelectedPropertyType: Dispatch<SetStateAction<string>>;
   selectedOrderBy: string;
   setSelectedOrderBy: Dispatch<SetStateAction<string>>;
+  price: number[];
+  setPrice: Dispatch<SetStateAction<number[]>>;
+  square: number[];
+  setSquare: Dispatch<SetStateAction<number[]>>;
 };

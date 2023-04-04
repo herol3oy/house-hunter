@@ -1,40 +1,105 @@
 import { Property } from "@/types/property";
 
+const MIN = 0;
+const MAX = 1;
+
 export function filterProperties(
   properties: Property[],
   selectedBaths: string,
   selectedBeds: string,
-  selectedPropertyType: string
+  selectedPropertyType: string,
+  price: number[],
+  square: number[]
 ) {
   return properties.filter((property: Property) => {
-    if (!selectedBaths && !selectedBeds && !selectedPropertyType) {
+    if (
+      !selectedBaths.length &&
+      !selectedBeds.length &&
+      !selectedPropertyType.length &&
+      property.price >= price[MIN] &&
+      property.price <= price[MAX] &&
+      property.size >= square[MIN] &&
+      property.size <= square[MAX]
+    ) {
       return true;
-    } else if (selectedBaths && !selectedBeds && !selectedPropertyType) {
-      return property.baths === Number(selectedBaths);
-    } else if (!selectedBaths && selectedBeds && !selectedPropertyType) {
-      return property.beds === Number(selectedBeds);
-    } else if (!selectedBaths && !selectedBeds && selectedPropertyType) {
-      return property.type === selectedPropertyType;
-    } else if (selectedBaths && selectedBeds && !selectedPropertyType) {
-      return (
-        property.baths === Number(selectedBaths) &&
-        property.beds === Number(selectedBeds)
-      );
-    } else if (selectedBaths && !selectedBeds && selectedPropertyType) {
-      return (
-        property.baths === Number(selectedBaths) &&
-        property.type === selectedPropertyType
-      );
-    } else if (!selectedBaths && selectedBeds && selectedPropertyType) {
-      return (
-        property.beds === Number(selectedBeds) &&
-        property.type === selectedPropertyType
-      );
+    } else if (
+      selectedBaths.length &&
+      !selectedBeds.length &&
+      !selectedPropertyType.length &&
+      property.baths === Number(selectedBaths) &&
+      property.price >= price[MIN] &&
+      property.price <= price[MAX] &&
+      property.size >= square[MIN] &&
+      property.size <= square[MAX]
+    ) {
+      return true;
+    } else if (
+      !selectedBaths.length &&
+      selectedBeds.length &&
+      !selectedPropertyType.length &&
+      property.beds === Number(selectedBeds) &&
+      property.price >= price[MIN] &&
+      property.price <= price[MAX] &&
+      property.size >= square[MIN] &&
+      property.size <= square[MAX]
+    ) {
+      return true;
+    } else if (
+      !selectedBaths.length &&
+      !selectedBeds.length &&
+      selectedPropertyType.length &&
+      property.type === selectedPropertyType &&
+      property.price >= price[MIN] &&
+      property.price <= price[MAX] &&
+      property.size >= square[MIN] &&
+      property.size <= square[MAX]
+    ) {
+      return true;
+    } else if (
+      selectedBaths.length &&
+      selectedBeds.length &&
+      !selectedPropertyType.length &&
+      property.baths === Number(selectedBaths) &&
+      property.beds === Number(selectedBeds) &&
+      property.price >= price[MIN] &&
+      property.price <= price[MAX] &&
+      property.size >= square[MIN] &&
+      property.size <= square[MAX]
+    ) {
+      return true;
+    } else if (
+      selectedBaths.length &&
+      !selectedBeds.length &&
+      selectedPropertyType.length &&
+      property.baths === Number(selectedBaths) &&
+      property.type === selectedPropertyType &&
+      property.price >= price[MIN] &&
+      property.price <= price[MAX] &&
+      property.size >= square[MIN] &&
+      property.size <= square[MAX]
+    ) {
+      return true;
+    } else if (
+      !selectedBaths.length &&
+      selectedBeds.length &&
+      selectedPropertyType.length &&
+      property.beds === Number(selectedBeds) &&
+      property.type === selectedPropertyType &&
+      property.price >= price[MIN] &&
+      property.price <= price[MAX] &&
+      property.size >= square[MIN] &&
+      property.size <= square[MAX]
+    ) {
+      return true;
     } else {
       return (
         property.baths === Number(selectedBaths) &&
         property.beds === Number(selectedBeds) &&
-        property.type === selectedPropertyType
+        property.type === selectedPropertyType &&
+        property.price >= price[MIN] &&
+        property.price <= price[MAX] &&
+        property.size >= square[MIN] &&
+        property.size <= square[MAX]
       );
     }
   });

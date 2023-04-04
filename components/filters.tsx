@@ -1,7 +1,6 @@
 // @ts-ignore
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
-import { useState } from "react";
 import { PropertyType } from "@/types/property-type";
 import { OrderBy } from "@/types/order-by";
 import { FiltersPropsType } from "@/types/filters-props-type";
@@ -15,20 +14,26 @@ export default function Filters({
   setSelectedPropertyType,
   selectedOrderBy,
   setSelectedOrderBy,
+  price,
+  setPrice,
+  square,
+  setSquare,
 }: FiltersPropsType) {
-  const [price, setPrice] = useState([0, 200]);
-  const [square, setSquare] = useState([0, 200]);
 
-  const SLIDERS = [
+  const INPUT_SLIDERS = [
     {
       title: "Price range",
       value: price,
       setValue: setPrice,
+      min: 0,
+      max: 10000000,
     },
     {
       title: "Square footage",
       value: square,
       setValue: setSquare,
+      min: 0,
+      max: 1560,
     },
   ];
 
@@ -86,13 +91,29 @@ export default function Filters({
         </select>
       </div>
       <div className="flex flex-col md:flex-row gap-12 md:gap-24 w-full">
-        {SLIDERS.map((slider) => (
-          <div key={slider.title} className="flex flex-col gap-5 w-full">
-            <h3>{slider.title}</h3>
-            <RangeSlider value={slider.value} onInput={slider.setValue} />
-            {slider.value}
-          </div>
-        ))}
+        {INPUT_SLIDERS.map(({ title, min, max, value, setValue }) => {
+          const minInputValue = value[0].toLocaleString();
+          const maxInputValue = value[1].toLocaleString();
+          return (
+            <div key={title} className="flex flex-col gap-5 w-full">
+              <h3>{title}</h3>
+              <RangeSlider
+                min={min}
+                max={max}
+                value={value}
+                onInput={setValue}
+              />
+              <div className="flex justify-between">
+                <small className="text-slate-500 font-bold">
+                  {minInputValue}
+                </small>
+                <small className="text-slate-500 font-bold">
+                  {maxInputValue}
+                </small>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

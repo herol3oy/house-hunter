@@ -19,12 +19,16 @@ export default function Home() {
   const [selectedBeds, setSelectedBeds] = useState("");
   const [selectedPropertyType, setSelectedPropertyType] = useState("");
   const [selectedOrderBy, setSelectedOrderBy] = useState("");
+  const [price, setPrice] = useState([0, 10000000]);
+  const [square, setSquare] = useState([0, 1560]);
 
   const filteredProperties = filterProperties(
     PROPERTIES_DATA,
     selectedBaths,
     selectedBeds,
-    selectedPropertyType
+    selectedPropertyType,
+    price,
+    square
   );
 
   switch (selectedOrderBy) {
@@ -51,6 +55,10 @@ export default function Home() {
           setSelectedPropertyType,
           selectedOrderBy,
           setSelectedOrderBy,
+          price,
+          setPrice,
+          square,
+          setSquare,
         }}
       />
       <PropertyCardsContainer
