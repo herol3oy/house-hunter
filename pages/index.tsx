@@ -1,13 +1,14 @@
-import { useState } from "react";
+import CallToAction from "@/components/callToAction";
+import FeatureProperty from "@/components/featureProperty";
 import Filters from "@/components/filters";
 import Hero from "@/components/hero";
 import PropertyCard from "@/components/propertyCard";
 import PropertyCardsContainer from "@/components/propertyCardsContainer";
-import CallToAction from "@/components/callToAction";
-import FeatureProperty from "@/components/featureProperty";
-import { PROPERTIES_DATA } from "../DATA";
 import { OrderBy } from "@/types/order-by";
+import { PropertyStatus } from "@/types/property-status";
 import { filterProperties } from "@/utils/filter-properties";
+import { useState } from "react";
+import { PROPERTIES_DATA } from "../DATA";
 
 const DEFAULT_NUMBER_OF_PROPERTIES = 6;
 
@@ -22,6 +23,7 @@ export default function Home() {
   const [price, setPrice] = useState([0, 10000000]);
   const [square, setSquare] = useState([0, 1560]);
   const [userSearchQuery, setUserSearchQuery] = useState("");
+  const [selectedOption, setSelectedOption] = useState(PropertyStatus.FOR_RENT);
 
   const filteredProperties = filterProperties(
     PROPERTIES_DATA,
@@ -30,7 +32,8 @@ export default function Home() {
     selectedPropertyType,
     price,
     square,
-    userSearchQuery
+    userSearchQuery,
+    selectedOption
   );
 
   switch (selectedOrderBy) {
@@ -50,6 +53,8 @@ export default function Home() {
         {...{
           userSearchQuery,
           setUserSearchQuery,
+          selectedOption,
+          setSelectedOption,
         }}
       />
       <Filters

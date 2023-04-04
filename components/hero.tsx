@@ -1,12 +1,17 @@
-import Image from "next/image";
 import { Dispatch, SetStateAction } from "react";
+import Image from "next/image";
+import { PropertyStatus } from "@/types/property-status";
 
 export default function Hero({
   userSearchQuery,
   setUserSearchQuery,
+  selectedOption,
+  setSelectedOption,
 }: {
   userSearchQuery: string;
   setUserSearchQuery: Dispatch<SetStateAction<string>>;
+  selectedOption: string;
+  setSelectedOption: Dispatch<SetStateAction<PropertyStatus>>;
 }) {
   return (
     <div className="bg-hero-image bg-bottom bg-no-repeat bg-cover flex flex-col gap-5 justify-end px-12 md:px-60 h-96 md:h-128">
@@ -14,10 +19,14 @@ export default function Hero({
       <p className="text-white text-xl">Find the house of your dreams</p>
 
       <div className="grid grid-cols-1 md:grid-cols-12 h-16 mb-24 mt-5 gap-4 md:gap-0">
-        <select className="bg-white text-gray -900 rounded-l-xl rounded-r-xl md:rounded-r-none col-span-4 md:col-span-2 p-2.5">
-          {OPTIONS.map((option) => (
-            <option key={option.id} value={option.name}>
-              {option.name}
+        <select
+          className="bg-white text-gray -900 rounded-l-xl rounded-r-xl md:rounded-r-none col-span-4 md:col-span-2 p-2.5"
+          value={selectedOption}
+          onChange={(e) => setSelectedOption(e.target.value as PropertyStatus)}
+        >
+          {Object.values(PropertyStatus).map((option) => (
+            <option key={option} value={option}>
+              {option}
             </option>
           ))}
         </select>
@@ -44,14 +53,3 @@ export default function Hero({
     </div>
   );
 }
-
-const OPTIONS = [
-  {
-    id: 1,
-    name: "For Rent",
-  },
-  {
-    id: 2,
-    name: "For Sale ",
-  },
-];
