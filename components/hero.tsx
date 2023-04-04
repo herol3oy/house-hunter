@@ -1,6 +1,13 @@
 import Image from "next/image";
+import { Dispatch, SetStateAction } from "react";
 
-export default function Hero() {
+export default function Hero({
+  userSearchQuery,
+  setUserSearchQuery,
+}: {
+  userSearchQuery: string;
+  setUserSearchQuery: Dispatch<SetStateAction<string>>;
+}) {
   return (
     <div className="bg-hero-image bg-bottom bg-no-repeat bg-cover flex flex-col gap-5 justify-end px-12 md:px-60 h-96 md:h-128">
       <h1 className="text-white text-5xl font-bold">Let us Guide You Home</h1>
@@ -29,6 +36,8 @@ export default function Hero() {
             name="search"
             className="flex-1 p-2 md:p-0 rounded-xl md:rounded-l-none pl-1 placeholder:text-gray-900 w-full"
             placeholder="Search for properties or keywords"
+            value={userSearchQuery}
+            onChange={(e) => setUserSearchQuery(e.target.value)}
           />
         </div>
       </div>

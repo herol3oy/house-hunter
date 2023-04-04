@@ -21,6 +21,7 @@ export default function Home() {
   const [selectedOrderBy, setSelectedOrderBy] = useState("");
   const [price, setPrice] = useState([0, 10000000]);
   const [square, setSquare] = useState([0, 1560]);
+  const [userSearchQuery, setUserSearchQuery] = useState("");
 
   const filteredProperties = filterProperties(
     PROPERTIES_DATA,
@@ -28,7 +29,8 @@ export default function Home() {
     selectedBeds,
     selectedPropertyType,
     price,
-    square
+    square,
+    userSearchQuery
   );
 
   switch (selectedOrderBy) {
@@ -44,7 +46,12 @@ export default function Home() {
 
   return (
     <>
-      <Hero />
+      <Hero
+        {...{
+          userSearchQuery,
+          setUserSearchQuery,
+        }}
+      />
       <Filters
         {...{
           selectedBaths,
