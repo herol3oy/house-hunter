@@ -1,6 +1,6 @@
 export default function CallToAction() {
   return (
-    <div className="flex flex-col md:flex-row gap-5 md:px-60 my-24 mx-2 md:mx-0">
+    <div className="flex flex-col lg:flex-row gap-5 md:px-60 my-24 mx-2 md:mx-0">
       <div className="flex flex-col gap-5 bg-gray-200 p-12 rounded-md w-full">
         <h1 className="text-blue-accent text-5xl">
           Aktas Properties {` `}

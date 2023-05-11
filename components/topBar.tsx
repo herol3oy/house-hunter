@@ -10,12 +10,7 @@ export default function TopBar() {
 
   return (
     <nav className="bg-blue-accent flex flex-col md:flex-row justify-between items-center gap-5 md:gap-10 md:px-60 p-10 w-full">
-      <Image
-        src="/reality-properties-logo.png"
-        alt="Reality Properties"
-        width={161}
-        height={42}
-      />
+      <h1 className="text-white text-lg font-extrabold">House Hunter</h1>
       <div
         className={`flex-1 flex items-center flex-col md:flex-row justify-start gap-2 md:gap-10 ${
           !showNavigation ? "hidden" : "block"
